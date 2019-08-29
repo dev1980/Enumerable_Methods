@@ -1,19 +1,21 @@
 module Enumerable
+
   def my_each
     i = 0
     while i < self.length
-        yield(self[i])
+    yield(self[i])
         i += 1
     end
-    return self
+  return self
   end
+
   def my_each_with_index
     i = 0
     length = self.length
     while i < length
     yield(self[i], i)
     i += 1
-  end
+    end
   end
 
   def my_select(&block)
@@ -31,14 +33,15 @@ module Enumerable
     end
     result
   end
+
   def my_any
     i = 0
     while i < self.length
-        if yield(self[i])
-            return true
-        else
+      if yield(self[i])
+        return true
+      else
             i += 1
-        end
+      end
     end
     if i == self.length
         return false
@@ -48,26 +51,26 @@ module Enumerable
   def my_none
     i = 0
     while i < self.length
-        if yield(self[i]) == false
-            i += 1
-        else
-            return false
-        end
+      if yield(self[i]) == false
+        i += 1
+      else
+        return false
+      end
     end
     if i == self.length
-        return true
+      return true
     end
   end
 
   def my_count(x = nil)
     i = 0
     if num
-        result = []
+      result = []
         while i < self.length
-            result << self[i] if i == x
-            i += 1
+          result << self[i] if i == x
+           i += 1
         end
-        return result
+      return result
     else
         count = 0
         while i < self.length
@@ -95,6 +98,7 @@ module Enumerable
         return result
     end
   end
+
   def my_inject(val = nil, &block)
     if instance_of? Range
     last = self.last
@@ -116,6 +120,7 @@ module Enumerable
     end
     result
   end
+
  def multiply_els
     return self.my_inject {|x,y| x * y}
  end
