@@ -1,7 +1,13 @@
-# Enumerable_Methods
-Ruby Solo Project
-Enumerable_bubble_sort method
-#my_each, #my_each_with_index, #my_select, #my_all?, #my_any?, #my_none?, #my_count, #my_map, #my_inject,#multiply_els
+Project Name
+Advanced-Building-Blocks-Enumerables
 
-Author : Brham Dev Mahato
-https://github.com/dev1980/Enumerable_Methods
+Author
+Brham Dev Mahato
+
+Project Website
+https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks
+
+obs: Assignment 2
+
+Project Description
+Recreating the methods for Enumerable
