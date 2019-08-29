@@ -33,69 +33,46 @@ module Enumerable
       result
   end
 
-  def my_any
-    i = 0
-    while i < self.length
-      if yield(self[i])
-        return true
-      else
-        i += 1
-      end
-    end
-    if i == self.length
-      return false
-    end
-  end
-
-  def my_none
-    i = 0
-    while i < self.length
-      if yield(self[i]) == false
-        i += 1
-      else
-        return false
-      end
-    end
-    if i == self.length
-      return true
-    end
-  end
-
-  def my_count(x = nil)
-    i = 0
-    if num
-      result = []
-        while i < self.length
-          result << self[i] if i == x
-          i += 1
-        end
-      return result
+  def my_any?(&block)
+    result = false
+    if block
+      my_each { |e| result = true if yield(e) }
     else
-        count = 0
-        while i < self.length
-          count += 1
-          i += 1
-        end
-        return count
+      my_each { |e| result = true if e }
     end
+    result
   end
 
-  def my_map(proc=nil)
-    i = 0
-    result = []
+  def my_none?(&block)
+    result = true
+    if block
+      my_each { |e| result = false if yield(e) }
+    else
+      my_each { |e| result = false if e }
+    end
+    result
+  end
+
+  def my_count(val = nil, &block)
+    result = 0
+    if block && !val
+      my_each { |e| result += 1 if yield(e) }
+    elsif !val
+      my_each { result += 1 }
+    else
+      my_each { |e| result += 1 if val == e }
+    end
+    result
+  end
+
+  def my_map(proc = nil, &block)
+    arr = []
     if proc
-        while i < self.length
-          result << proc.call(self[i])
-          i += 1
-        end
-        return result
+      my_each { |e| arr.push(proc.call(e)) }
     else
-        while i < self.length
-          result << yield(self[i])
-          i += 1
-        end   
+      my_each { |e| arr.push(block.call(e)) }
     end
-    return result
+    arr
   end
 
   def my_inject(val = nil, &block)
@@ -104,23 +81,19 @@ module Enumerable
       first = self.first
       result = val
       i = first
-    while i <= last
+      while i <= last
         result = block.call(result, i) unless i == first
         i += 1
-    end
+      end
     else
       i = 1
       result = self[0]
       result = block.call(result, val) if val
-    while i < length
-      result = block.call(result, self[i])
-      i += 1
-    end
+      while i < length
+        result = block.call(result, self[i])
+        i += 1
+      end
     end
     result
   end
-
- def multiply_els
-    return self.my_inject {|x,y| x * y}
- end
 end
