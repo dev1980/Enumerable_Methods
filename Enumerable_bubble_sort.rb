@@ -30,7 +30,7 @@ module Enumerable
     else
       my_each { |e| result = false unless e }
     end
-      result
+    result
   end
 
   def my_any?(&block)
@@ -96,4 +96,5 @@ module Enumerable
     end
     result
   end
+  
 end
