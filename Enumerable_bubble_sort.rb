@@ -1,12 +1,10 @@
 module Enumerable
-
   def my_each
     i = 0
     while i < self.length
-    yield(self[i])
+        yield(self[i])
         i += 1
     end
-  return self
   end
 
   def my_each_with_index
@@ -14,7 +12,7 @@ module Enumerable
     length = self.length
     while i < length
     yield(self[i], i)
-    i += 1
+      i += 1
     end
   end
 
@@ -28,7 +26,7 @@ module Enumerable
     result = true
     if block
     my_each { |e| result = false unless yield(e) }
-    else
+      else
     my_each { |e| result = false unless e }
     end
     result
@@ -40,11 +38,11 @@ module Enumerable
       if yield(self[i])
         return true
       else
-            i += 1
+        i += 1
       end
     end
     if i == self.length
-        return false
+      return false
     end
   end
 
@@ -124,5 +122,4 @@ module Enumerable
  def multiply_els
     return self.my_inject {|x,y| x * y}
  end
-
 end
