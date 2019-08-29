@@ -22,11 +22,11 @@ module Enumerable
   def my_all?(&block)
     result = true
     if block
-    my_each { |e| result = false unless yield(e) }
-      else
-    my_each { |e| result = false unless e }
+      my_each { |e| result = false unless yield(e) }
+    else
+      my_each { |e| result = false unless e }
     end
-    result
+      result
   end
 
   def my_any
@@ -63,14 +63,14 @@ module Enumerable
       result = []
         while i < self.length
           result << self[i] if i == x
-           i += 1
+          i += 1
         end
       return result
     else
         count = 0
         while i < self.length
-            count += 1
-            i += 1
+          count += 1
+          i += 1
         end
         return count
     end
@@ -81,36 +81,36 @@ module Enumerable
     result = []
     if proc
         while i < self.length
-            result << proc.call(self[i])
-            i += 1
+          result << proc.call(self[i])
+          i += 1
         end
         return result
     else
         while i < self.length
-            result << yield(self[i])
-            i += 1
-        end
-        return result
+          result << yield(self[i])
+          i += 1
+        end   
     end
+    return result
   end
 
   def my_inject(val = nil, &block)
     if instance_of? Range
-    last = self.last
-    first = self.first
-    result = val
-    i = first
+      last = self.last
+      first = self.first
+      result = val
+      i = first
     while i <= last
         result = block.call(result, i) unless i == first
         i += 1
     end
     else
-    i = 1
-    result = self[0]
-    result = block.call(result, val) if val
+      i = 1
+      result = self[0]
+      result = block.call(result, val) if val
     while i < length
-        result = block.call(result, self[i])
-        i += 1
+      result = block.call(result, self[i])
+      i += 1
     end
     end
     result
