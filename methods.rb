@@ -99,3 +99,7 @@ module Enumerable
     result
   end
 end
+# test function for inject
+def multiply_els(arr)
+  p arr.my_inject(1) { |product, v| product * v }
+end
