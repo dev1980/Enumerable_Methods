@@ -19,7 +19,7 @@ RSpec.describe Enumerable do
       expect(test_array_1.my_each_with_index { |_e, i| i }).to eql(test_array_1)
     end
   end
-  
+
   describe '#my_select' do
     it 'returns an array depending on the condition' do
       expect(test_array_1.my_select { |e| e % 3 == 0 }).to eql(test_array_2)
@@ -35,6 +35,18 @@ RSpec.describe Enumerable do
   describe '#my_any' do
     it 'returns true if any elements meet the condition' do
       expect(test_array_1.my_any? { |e| e % 3 == 0 }).to eql(true)
+    end
+  end
+
+  describe '#my_none' do
+    it 'returns true if none elements meet the condition' do
+      expect(test_array_1.none? { |e| e % 3 == 0 }).to eql(false)
+    end
+  end
+
+  describe '#my_count' do
+    it 'returns how many times is the number on the array' do
+      expect(test_array_1.my_count(3)).to eql(1)
     end
   end
 
