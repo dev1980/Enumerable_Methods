@@ -24,11 +24,17 @@ RSpec.describe Enumerable do
       expect(test_array_1.my_select { |e| e % 3 == 0 }).to eql(test_array_2)
     end
   end
-  
+
   describe '#my_all' do
     it 'returns true if all the elements meet the condition' do
       expect(test_array_1.my_all? { |e| e % 3 == 0 }).to eql(false)
     end
   end
 
+describe '#my_any' do
+    it 'returns true if any elements meet the condition' do
+      expect(test_array_1.my_any? { |e| e % 3 == 0 }).to eql(true)
+    end
+  end
+  
 end
