@@ -13,12 +13,13 @@ RSpec.describe Enumerable do
       expect(test_array_1.my_each { |e| e }).to eql(test_array_1)
     end
   end
-   
+
   describe '#my_each_with_index' do
     it 'returns all elements with the index in the array' do
       expect(test_array_1.my_each_with_index { |_e, i| i }).to eql(test_array_1)
     end
   end
+  
   describe '#my_select' do
     it 'returns an array depending on the condition' do
       expect(test_array_1.my_select { |e| e % 3 == 0 }).to eql(test_array_2)
@@ -31,10 +32,10 @@ RSpec.describe Enumerable do
     end
   end
 
-describe '#my_any' do
+  describe '#my_any' do
     it 'returns true if any elements meet the condition' do
       expect(test_array_1.my_any? { |e| e % 3 == 0 }).to eql(true)
     end
   end
-  
+
 end
