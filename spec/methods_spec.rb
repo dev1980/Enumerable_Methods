@@ -57,4 +57,9 @@ RSpec.describe Enumerable do
     end
   end
 
+  describe '#my_inject' do
+    it 'returns a new array that meets the condition' do
+      expect(test_array_1.my_inject(5) { |sum, e| sum + e }).to eql(20)
+    end
+  end
 end
