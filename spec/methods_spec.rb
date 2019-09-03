@@ -17,7 +17,7 @@ RSpec.describe Enumerable do
 
   describe '#my_each_with_index' do
     it 'returns all elements with the index in the array' do
-      expect(test_array_1.my_each_with_index { |_e, i| i }).to eql(test_array_1)
+      expect(test_array_1.my_each_with_index { |e| e }).to eql(test_array_1)
     end
   end
 
