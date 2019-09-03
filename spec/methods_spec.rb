@@ -9,9 +9,8 @@ RSpec.describe Enumerable do
   let(:test_array_2) { [3] }
   let(:test_array_3) { [2, 4, 6, 8, 10] }
   let(:test_array_4) { [nil, true, 99] }
-  let(:proc) { Proc.new { |e| e * 2 }  }
+  let(:proc) { proc { |e| e * 2 } }
   
-
   describe '#my_each' do
     it 'returns all elements in the array' do
       expect(test_array_1.my_each { |e| e }).to eql(test_array_1)
@@ -65,7 +64,7 @@ RSpec.describe Enumerable do
       expect(test_array_1.my_count).to eql(5)
     end
     it 'returns how many times is the number on the array' do
-      expect(test_array_1.my_count{ |e| e > 2 }).to eql(3)
+      expect(test_array_1.my_count { |e| e > 2 }).to eql(3)
     end
   end
 
