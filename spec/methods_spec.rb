@@ -47,10 +47,10 @@ RSpec.describe Enumerable do
 
   describe '#my_none' do
     it 'returns true if none elements meet the condition' do
-      expect(test_array_1.none? { |e| e % 3 == 0 }).to eql(false)
+      expect(test_array_1.my_none? { |e| e % 3 == 0 }).to eql(false)
     end
     it 'returns true if none elements meet the condition' do
-      expect(test_array_4.none?).to eql(false)
+      expect([nil, nil, nil].my_none?).to eql(true)
     end
   end
 
