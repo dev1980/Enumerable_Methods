@@ -1,8 +1,10 @@
 Project Name
 Advanced-Building-Blocks-Enumerables
 
-Author
+Authors:
+
 Brham Dev Mahato
+
 Andoni Uzquiano https://github.com/Juakata
 
 Project Website
