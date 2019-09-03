@@ -8,6 +8,7 @@ module Enumerable
       yield(self[i])
       i += 1
     end
+    self
   end
 
   def my_each_with_index
@@ -17,6 +18,7 @@ module Enumerable
       yield(self[i], i)
       i += 1
     end
+    self
   end
 
   def my_select(&block)
@@ -81,7 +83,8 @@ module Enumerable
     if instance_of? Range
       last = self.last
       first = self.first
-      result = val
+      result = first
+      result = block.call(result, val) if val
       i = first
       while i <= last
         result = block.call(result, i) unless i == first
