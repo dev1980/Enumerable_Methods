@@ -9,7 +9,6 @@ RSpec.describe Enumerable do
   let(:test_array_2) { [3] }
   let(:test_array_3) { [2, 4, 6, 8, 10] }
   let(:test_array_4) { [nil, true, 99] }
-  let(:proc) { proc { |e| e * 2 } }
   
   describe '#my_each' do
     it 'returns all elements in the array' do
@@ -73,7 +72,7 @@ RSpec.describe Enumerable do
       expect(test_array_1.my_map { |e| e * 2 }).to eql(test_array_3)
     end
     it 'returns a new array that meets the condition' do
-      expect(test_array_1.my_map(proc)).to eql(test_array_3)
+      expect(test_array_1.my_map(proc{ |e| e * 2 })).to eql(test_array_3)
     end
   end
 
